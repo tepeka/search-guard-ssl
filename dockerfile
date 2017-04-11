@@ -2,17 +2,16 @@ FROM java:8
 
 RUN \
   apt-get update && \
-  apt-get install -y \
-    git \
-    openssl && \
+  apt-get install -y openssl && \
   rm -rf /var/lib/apt/lists/*
 
-WORKDIR /data
+ENV wd /workdir
+ENV output ${wd}/output
 
-RUN \
-  git clone https://github.com/floragunncom/search-guard-ssl.git && \
-  mkdir /tmp/output
+WORKDIR ${wd}
+RUN mkdir ${output}
 
-WORKDIR /data/search-guard-ssl/example-pki-scripts
+COPY bin ${wd}
+COPY etc ${wd}/etc
 
-ENTRYPOINT sh -c './example.sh && cp * /tmp/output'
+CMD ["./example.sh"]
