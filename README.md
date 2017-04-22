@@ -16,9 +16,10 @@ The pre-set properties can be set via environment variables:
 
 `docker run --rm -it -v <path-to-output-dir>:/workdir/output -e "TEPEKA_DOMAIN=example.net" -e "TEPEKA_USER=root" -e "TEPEKA_NODE=1" tepeka/search-guard-ssl`
 
-The directory `/etc` contains the default certificate configuration which is also part of the docker image. You can adapt the configuration and overlay the directory at runtime (`docker run`) with the following parameter:
+The directory `/etc` contains the default certificate configuration which is also part of the docker image. You can adapt the configuration and overlay the directory at runtime with `-v <path-to-etc-dir>:/workdir/etc`:
 
-`-v <path-to-etc-dir>:/workdir/etc`
+`docker run --rm -it -v <path-to-output-dir>:/workdir/output -v <path-to-etc-dir>:/workdir/etc -e "TEPEKA_DOMAIN=example.net" -e "TEPEKA_USER=root" -e "TEPEKA_NODE=1" tepeka/search-guard-ssl`
+
 
 
 ## Execute Single Certificates
