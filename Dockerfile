@@ -14,4 +14,4 @@ RUN mkdir ${output}
 COPY bin ${wd}
 COPY etc ${wd}/etc
 
-CMD ["./example.sh"]
+CMD ["./generate.sh"]
