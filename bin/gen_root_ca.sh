@@ -1,16 +1,10 @@
 #!/bin/bash
 set -e
+
 rm -rf output/ca output/certs* output/crl output/*.jks
 
-if [ -z "$2" ] ; then
-  unset CA_PASS TS_PASS
-  echo enter root CA secrets
-  read -p "1) CA pass: " -s CA_PASS ; echo
-  read -p "2) Truststore pass: " -s TS_PASS ; echo
- else
-  CA_PASS=$1
-  TS_PASS=$2
-fi
+CA_PASS=$1
+TS_PASS=$2
 
 mkdir -p output/ca/root-ca/private output/ca/root-ca/db output/crl output/certs
 chmod 700 output/ca/root-ca/private

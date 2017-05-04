@@ -5,20 +5,13 @@ The intened use of this repository is to create Java Keystore and Truststore nec
 # How To
 
 ## Execute Basic Certificate Set
-The default container command creates a root certificate authority, a certificate for node 0, and a certificate for the client node user `admin`. The secrets will be asked during runtime.
+The default container command creates a root certificate authority, a certificate for node 0, and a certificate for the client node user `admin`. The secrets and client certificate fields will be asked during runtime.
 
 `docker run --rm -it -v <path-to-output-dir>:/workdir/output tepeka/search-guard-ssl`
 
-The pre-set properties can be set via environment variables:
-* `TEPEKA_DOMAIN`: The domain the node certificate is valid for.
-* `TEPEKA_NODE`: The node number the node certificate is valid for.
-* `TEPEKA_USER`: The user name the client certificate is valid for.
+The directory `/etc` contains the default root and signing certificate configuration which is also part of the docker image. You can adapt the configuration and overlay the directory at runtime with `-v <path-to-etc-dir>:/workdir/etc`:
 
-`docker run --rm -it -v <path-to-output-dir>:/workdir/output -e "TEPEKA_DOMAIN=example.net" -e "TEPEKA_USER=root" -e "TEPEKA_NODE=1" tepeka/search-guard-ssl`
-
-The directory `/etc` contains the default certificate configuration which is also part of the docker image. You can adapt the configuration and overlay the directory at runtime with `-v <path-to-etc-dir>:/workdir/etc`:
-
-`docker run --rm -it -v <path-to-output-dir>:/workdir/output -v <path-to-etc-dir>:/workdir/etc -e "TEPEKA_DOMAIN=example.net" -e "TEPEKA_USER=root" -e "TEPEKA_NODE=1" tepeka/search-guard-ssl`
+`docker run --rm -it -v <path-to-output-dir>:/workdir/output -v <path-to-etc-dir>:/workdir/etc tepeka/search-guard-ssl`
 
 
 
