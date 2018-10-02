@@ -40,7 +40,7 @@ echo Generating keystore and certificate for node $CRT_NODE_NAME
         -keypass $KS_PASS \
         -storepass $KS_PASS \
         -dname "CN=$CRT_NODE_NAME.$CRT_DOMAIN, OU=$CRT_OU, O=$CRT_O, ST=$CRT_ST, C=$CRT_C" \
-        -ext san=dns:$CRT_NODE_NAME.$CRT_DOMAIN,dns:localhost,ip:127.0.0.1,oid:1.2.3.4.5.5 
+        -ext san=dns:$CRT_NODE_NAME.$CRT_DOMAIN,dns:localhost,dns:ip6-localhost,ip:127.0.0.1,ip:::1,oid:1.2.3.4.5.5 
         
 #oid:1.2.3.4.5.5 denote this a server node certificate for search guard
 
@@ -54,7 +54,7 @@ echo Generating certificate signing request for node $CRT_NODE_NAME
         -keypass $KS_PASS \
         -storepass $KS_PASS \
         -dname "CN=$CRT_NODE_NAME.$CRT_DOMAIN, OU=$CRT_OU, O=$CRT_O, ST=$CRT_ST, C=$CRT_C" \
-        -ext san=dns:$CRT_NODE_NAME.$CRT_DOMAIN,dns:localhost,ip:127.0.0.1,oid:1.2.3.4.5.5
+        -ext san=dns:$CRT_NODE_NAME.$CRT_DOMAIN,dns:localhost,dns:ip6-localhost,ip:127.0.0.1,ip:::1,oid:1.2.3.4.5.5
         
 #oid:1.2.3.4.5.5 denote this a server node certificate for search guard
 
